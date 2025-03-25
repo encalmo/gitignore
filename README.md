@@ -20,11 +20,11 @@ This nano-library provides Scala implementation of the `.gitignore` compliant fi
 
 Use with SBT
 
-    libraryDependencies += "org.encalmo.utils" %% "gitignore" % "0.9.1"
+    libraryDependencies += "org.encalmo" %% "gitignore" % "0.9.1"
 
 or with SCALA-CLI
 
-    //> using dep org.encalmo.utils::gitignore:0.9.1
+    //> using dep org.encalmo::gitignore:0.9.1
 
 ## Examples
 
