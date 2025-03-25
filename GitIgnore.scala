@@ -2,6 +2,8 @@ package org.encalmo.utils
 
 import scala.annotation.tailrec
 import java.io.File
+import java.nio.file.Path
+import scala.jdk.CollectionConverters.*
 
 /** Filter paths using .gitignore patterns.
   *
@@ -19,6 +21,21 @@ case class GitIgnore(gitPatterns: Seq[String]) {
 
   lazy val patterns: Seq[Pattern] =
     gitPatterns.map(parseGitPattern)
+
+  final def isIgnored(path: Path): Boolean =
+    isIgnored(
+      path.iterator().asScala.map(_.toString).to(Iterable),
+      path.toFile().isDirectory()
+    )
+
+  final def isAllowed(path: Path): Boolean =
+    !isIgnored(path)
+
+  final def isIgnored(path: Path, isDirectory: Boolean): Boolean =
+    isIgnored(
+      path.iterator().asScala.map(_.toString).to(Iterable),
+      isDirectory
+    )
 
   /** Check whether path should be ignored
     * @param path
