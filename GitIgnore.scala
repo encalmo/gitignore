@@ -17,6 +17,15 @@ import scala.jdk.CollectionConverters.*
   */
 case class GitIgnore(gitPatterns: Seq[String]) {
 
+  final inline def prepend(pattern: String): GitIgnore =
+    GitIgnore(pattern +: gitPatterns)
+
+  final inline def append(pattern: String): GitIgnore =
+    GitIgnore(gitPatterns :+ pattern)
+
+  final def excludeGitFolder(): GitIgnore =
+    prepend(".git/")
+
   import GitIgnore.*
 
   lazy val patterns: Seq[Pattern] =

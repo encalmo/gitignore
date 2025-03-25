@@ -17,9 +17,10 @@ class GitIgnoreSpec extends AnyWordSpecCompat {
   "GitIgnore" should {
 
     "read from current directory" in {
-      val gitIgnore = GitIgnore.fromCurrentDirectory()
+      val gitIgnore = GitIgnore.fromCurrentDirectory().prepend(".git/")
       gitIgnore.isAllowed(".scala-build/") shouldBe false
       gitIgnore.isAllowed("GitIgnore.scala") shouldBe true
+      gitIgnore.isAllowed(".git/") shouldBe false
     }
 
     "read from the file" in {
