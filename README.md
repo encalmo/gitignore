@@ -166,3 +166,29 @@ gitignore.isAllowed("target/")
 gitignore.isAllowed("target.json")
 // res44: Boolean = true
 ```
+
+## Project content
+
+```
+├── .github
+│   └── workflows
+│       ├── pages.yaml
+│       ├── release.yaml
+│       └── test.yaml
+│
+├── .gitignore
+├── .scalafmt.conf
+├── AnyWordSpecCompat.test.scala
+├── Debug.scala
+├── GitIgnore.scala
+├── GitIgnore.test.scala
+├── Glob.scala
+├── Glob.test.scala
+├── GlobCheck.test.scala
+├── LICENSE
+├── project.scala
+├── README.md
+├── test.sh
+├── Zoom.scala
+└── Zoom.test.scala
+```
